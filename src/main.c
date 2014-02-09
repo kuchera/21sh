@@ -1,7 +1,13 @@
 #include "main.h"
 
+void tests()
+{
+	printf("=== TESTS ===\n");
+	printf("=============\n");
+}
+
 int main()
 {
-    printf("Hello world !\n");
-    return 0;
+	tests();
+	return 0;
 }
