@@ -10,5 +10,7 @@ void p_welcome();
 void p_help();
 // Affiche l'aide de la fonction id
 void p_man(char *id);
+// Affiche une chaine de caracteres
+void print(char *str);
 
 #endif
