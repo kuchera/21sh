@@ -17,7 +17,5 @@ int my_fread(const char *file, char **out);
 long my_flen(const char *file);
 // Renvoie la longueur du fichier
 long my_fflen(FILE *file);
-// Lis la premiere ligne du fichier et la retourne
-char* my_freadline(FILE *f);
 
 #endif //MY_IO_DEFINE

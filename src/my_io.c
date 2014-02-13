@@ -1,24 +1,20 @@
 #include "my_io.h"
 
-int main() 
-{
-	char *s;
-	printf("%d\n", my_fread("my_io.h", &s));
-	puts(s);
-	return 0;
-}
-
 int my_fread(const char *file, char** out)
 {
-	return 0;
+	FILE *f = fopen(file, "r");
+	if (!f)
+		return -1;
+	long len =  my_fflen(f);
+	*out = malloc((len + 1) * sizeof(char));
+	**out = 0;
+	char *c = strchr(*out, '\0');
+	while (fgets(c, len, f))
+		c = strchr(*out, '\0');
+	return fclose(f);
 }
 
-char* my_freadline(FILE *f)
-{
-	return NULL;
-}
-
-int my_fwrite(const char *file, const char *str)
+int my_fwrite(const char *file, const char* str)
 {
 	if (str == NULL)
 		return 0;

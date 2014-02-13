@@ -5,6 +5,7 @@
 #include <stdlib.h>
 
 #include "my_list.h"
+#include "my_io.h"
 #include "command.h"
 #include "index.h"
 
