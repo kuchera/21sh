@@ -6,6 +6,7 @@ char** my_split(const char* str, const char* sep, int *size)
 		return NULL;
 	my_list l = NULL;
 	char *s = my_stralloc(str);
+	int i;
 	my_ladd(&l, s);
 	*size = 1;
 	while (*s != '\0')
@@ -22,6 +23,10 @@ char** my_split(const char* str, const char* sep, int *size)
 	}
 	char **t = my_ltoarray(l);
 	my_lfree(&l);
+	s = t[0];
+	for (i=0 ; i<*size ; ++i)
+		t[i] = my_stralloc(t[i]);
+	free(s);
 	return t;
 }
 
