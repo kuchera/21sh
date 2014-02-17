@@ -2,8 +2,30 @@
 
 static void my_trealloc(my_tab t)
 {
-	t->count *= 2;
-	t->tab = realloc(t->tab, t->count * sizeof(void*));
+	t->size *= 2;
+	t->tab = realloc(t->tab, t->size * sizeof(void*));
+}
+
+void my_tapply(my_tab t, void(*f)(void*))
+{
+	int i;
+	for (i=0 ; i<t->count ; ++i)
+		(*f)(t->tab[i]);
+}
+
+void my_tapplyto(my_tab t, void(*f)(void*), int i)
+{
+	(*f)(t->tab[i]);
+}
+
+int my_tassert(my_tab t, int(*f)(void*))
+{
+	int i = 0;
+	while (i < t->count && !(*f)(t->tab[i]))
+		++i;
+	if (i < t->count)
+		return i;
+	return -1;
 }
 
 int my_tlen(my_tab t)
@@ -18,6 +40,7 @@ void* my_trmat(my_tab t, int i)
 	while (i < t->count)
 	{
 		t->tab[i] = t->tab[i+1];
+		++i;
 	}
 	return ret;
 }

@@ -1,8 +1,5 @@
 #include "fun_cd.h"
 
-
-
-
 int fun_cd (int argc, char *argv[])
 {
 	if ((argc == 1)) 
