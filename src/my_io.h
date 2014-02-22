@@ -13,6 +13,8 @@ int my_fwrite(const char *file, const char *str);
 int my_fadd(const char *file, const char* str);
 // Met dans out le contenu du fichier
 int my_fread(const char *file, char **out);
+// Ecrit le fichier dans out
+int my_fprint(const char *file, FILE *out);
 // Renvoie la longueur du fichier (bytes)
 long my_flen(const char *file);
 // Renvoie la longueur du fichier

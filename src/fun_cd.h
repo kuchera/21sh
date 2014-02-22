@@ -10,6 +10,6 @@
 /*
  * Fonction
  */
-int fun_cd(int argc, char **argv);
+int fun_cd(int argc, char **argv, FILE *out, FILE *err);
 
 #endif

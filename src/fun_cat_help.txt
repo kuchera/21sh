@@ -1,0 +1,5 @@
+NAME
+	cat - print files on the standard output
+
+DESCRIPTION
+	cat [OPTION] [FILES]

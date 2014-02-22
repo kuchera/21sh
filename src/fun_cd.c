@@ -1,6 +1,7 @@
 #include "fun_cd.h"
 
-int fun_cd (int argc, char *argv[])
+/*
+int fun_cd (int argc, char **argv, FILE *out, FILE *err)
 {
 	if ((argc == 1)) 
     {
@@ -39,3 +40,4 @@ int fun_cd (int argc, char *argv[])
 
     return 0;
 }
+*/

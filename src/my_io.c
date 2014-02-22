@@ -1,5 +1,16 @@
 #include "my_io.h"
 
+int my_fprint(const char *file, FILE *out)
+{
+	FILE *f = fopen(file, "r");
+	int c;
+	if (!f)
+		return -1;
+	while ((c=fgetc(f)) != EOF)
+		fputc(c, out);
+	return fclose(f);
+}
+
 int my_fread(const char *file, char** out)
 {
 	FILE *f = fopen(file, "r");
