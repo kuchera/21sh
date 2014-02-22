@@ -7,10 +7,10 @@
 #include "env.h"
 #include "fun_cat.h"
 #include "fun_cd.h"
-#include "my_list.h"
 #include "my_io.h"
 #include "my_charwork.h"
 #include "my_tab.h"
+#include "print.h"
 #include "index.h"
 
 int main();

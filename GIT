@@ -1,0 +1,5 @@
+git add *
+git add -u
+git commit
+git reset --hard HEAD
+git push origin master

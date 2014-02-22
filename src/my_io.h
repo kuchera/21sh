@@ -3,19 +3,17 @@
 
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
 
-#include "my_list.h"
-#include "string.h"
-
-// Ecrit str dans file
+// Ecrit str dans file (-1 si erreur)
 int my_fwrite(const char *file, const char *str);
-// Ajoute str a la fin de file
+// Ajoute str a la fin de file (-1 si erreur)
 int my_fadd(const char *file, const char* str);
-// Met dans out le contenu du fichier
+// Met dans out le contenu du fichier (-1 si erreur)
 int my_fread(const char *file, char **out);
-// Ecrit le fichier dans out
+// Ecrit le contenu de file dans out (-1 si erreur)
 int my_fprint(const char *file, FILE *out);
-// Renvoie la longueur du fichier (bytes)
+// Renvoie la longueur du fichier (-1 si erreur)
 long my_flen(const char *file);
 // Renvoie la longueur du fichier
 long my_fflen(FILE *file);

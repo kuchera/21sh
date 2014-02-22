@@ -10,7 +10,9 @@
 char** my_split(const char* str, const char* sep, int *size);
 // Assemble les size premieres chaines de tab separees par sep
 char* my_smerge(char **tab, int size, const char *sep);
+// Comme my_split
 my_tab my_tsplit(const char *str, const char *sep);
+// comme my_smerge
 char* my_tsmerge(my_tab t, const char *sep);
 // Alloue et copie str
 char* my_stralloc(const char* str);

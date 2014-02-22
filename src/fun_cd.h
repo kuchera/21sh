@@ -8,7 +8,7 @@
 #include <sys/types.h>
 
 /*
- * Fonction
+ * Fonction de deplacement dans les fichiers
  */
 int fun_cd(int argc, char **argv, FILE *out, FILE *err);
 

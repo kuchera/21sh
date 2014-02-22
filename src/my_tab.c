@@ -109,3 +109,8 @@ void my_tfree(my_tab t)
 	free(t->tab);
 	free(t);
 }
+
+void* my_tlast(my_tab t)
+{
+	return my_tget(t, t->count - 1);
+}

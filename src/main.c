@@ -2,10 +2,10 @@
 
 int main()
 {
-	my_tab t = my_tnew();
-	my_tadd(t, "cat");
-	my_tadd(t, "fun_cat_help.txt");
-	i_add("cat", &fun_cat);
-	i_call(t);
+	print_welcome();
+	char *s;
+	while (strcmp(s = my_readline(), "exit"))
+	{
+	}
 	return 0;
 }
