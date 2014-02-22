@@ -1,13 +1,9 @@
 #include "main.h"
 
-void tests()
-{
-	printf("=== TESTS ===\n");
-	printf("=============\n");
-}
-
 int main()
 {
-	tests();
+	path(build_path(home()));
+	path_add("dirdir");
+	my_tprint(path(NULL));
 	return 0;
 }

@@ -1,9 +1,38 @@
 #include "my_tab.h"
 
+static void f(void *e)
+{
+	puts(e);
+}
+
+void my_tprint(my_tab t)
+{
+	my_tapply(t, &f);
+}
+
+my_tab my_tbuild(void **tab, int size)
+{
+	my_tab t = my_tnew();
+	t->size = size;
+	t->count = size;
+	t->tab = tab;
+	return t;
+}
+
 static void my_trealloc(my_tab t)
 {
 	t->size *= 2;
 	t->tab = realloc(t->tab, t->size * sizeof(void*));
+}
+
+void my_taddtab(my_tab t, void **tab, int count)
+{
+	int i = 0;
+	while (i < count)
+	{
+		my_tadd(t, tab[i]);
+		++i;
+	}
 }
 
 void my_tapply(my_tab t, void(*f)(void*))

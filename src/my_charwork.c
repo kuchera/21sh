@@ -1,13 +1,52 @@
 #include "my_charwork.h"
 
+my_tab my_tsplit(const char *str, const char *sep)
+{
+	int i;
+	char **t = my_split(str, sep, &i);
+	return my_tbuild((void**)t, i);
+}
+
+char* my_tsmerge(my_tab t, const char *sep)
+{
+	return my_smerge((char**)(t->tab), t->count, sep);
+}
+
+char* my_smerge(char **tab, int size, const char *sep)
+{
+	if (size <= 0)
+		return NULL;
+	char *ret;
+	long len = 1;
+	int i = 0;
+	for (i=0 ; i<size ; ++i)
+		len += strlen(tab[i]);
+	len += strlen(sep) * (size - 1);
+	ret = malloc(len * sizeof(char));
+	strcpy(ret, *tab);
+	for (i=1 ; i<size ; ++i)
+	{
+		strcat(ret, sep);
+		strcat(ret, tab[i]);
+	}
+	return ret;
+}
+
+char* my_strcat(const char *s1, const char *s2)
+{
+	char *ret = malloc((strlen(s1) + strlen(s2) + 1) * sizeof(char));
+	strcpy(ret, s1);
+	return strcat(ret, s2);
+}
+
 char** my_split(const char* str, const char* sep, int *size)
 {
 	if (str == NULL || sep== NULL)
 		return NULL;
-	my_list l = NULL;
+	my_tab t = my_tnew();
 	char *s = my_stralloc(str);
 	int i;
-	my_ladd(&l, s);
+	my_tadd(t, s);
 	*size = 1;
 	while (*s != '\0')
 	{
@@ -15,19 +54,19 @@ char** my_split(const char* str, const char* sep, int *size)
 		{
 			*s = '\0';
 			++s;
-			my_ladd(&l, s);
+			my_tadd(t, s);
 			++*size;
 		}
 		else
 			++s;
 	}
-	char **t = my_ltoarray(l);
-	my_lfree(&l);
-	s = t[0];
+	char **tab = (char**)(t->tab);
+	s = tab[0];
 	for (i=0 ; i<*size ; ++i)
-		t[i] = my_stralloc(t[i]);
+		tab[i] = my_stralloc(tab[i]);
+	free(t);
 	free(s);
-	return t;
+	return tab;
 }
 
 char* my_stralloc(const char* str)
