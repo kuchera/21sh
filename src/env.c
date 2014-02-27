@@ -1,5 +1,23 @@
 #include "env.h"
 
+char* prompts(char *s)
+{
+	static char *mess = NULL;
+	if (s)
+	{
+		if (mess)
+			free(mess);
+		mess = s;
+	}
+	else if (!mess)
+	{
+		char *p = pathtos(path(NULL));
+		mess = my_strcat(p, " > ");
+		free(p);
+	}
+	return mess;
+}
+
 char* pathtos(my_tab t)
 {
 	return my_smerge((char**)(t->tab), t->count, PATH_SEPARATORS);
@@ -26,7 +44,7 @@ my_tab path(my_tab path)
 	if (path)
 		t = path;
 	else if (!t)
-		t = my_tnew();
+		t = build_path(home());
 	return t;
 }
 

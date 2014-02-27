@@ -19,5 +19,7 @@ my_tab path(my_tab path);
 void path_add(const char *dir);
 // Remonte dans le repertoire parent
 void path_up();
+// Definit ou retourne le PS1
+char* prompts(char *s);
 
 #endif

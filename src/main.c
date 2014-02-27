@@ -1,6 +1,12 @@
 #include "main.h"
 
-int main()
+int main(int argc, char **argv)
 {
-	return run();
+	if (argc == 2 && !strcmp(argv[1], "-t"))
+	{
+		puts(prompts(NULL));
+		return 0;
+	}
+	else
+		return run(argc, argv);
 }

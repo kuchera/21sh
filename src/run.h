@@ -14,10 +14,11 @@
 #include "index.h"
 #include "match.h"
 #include "input.h"
+#include "constants.h"
 
 /*
  * Boucle principale
  */
-int run();
+int run(int argc, char **argv);
 
 #endif
