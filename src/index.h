@@ -20,5 +20,7 @@ void i_add(const char *id, command f);
 void i_free();
 // Renvoie le nombre de fonctions dans l'index
 int i_count();
+// Initialise l'index
+void i_init();
 
 #endif

@@ -14,5 +14,6 @@ int fun_echo(int argc, char **argv, FILE* out, FILE* err)
   	}
   	fprintf(out,"\n");
   	return 0;
+	if (err) return 0;
 }
 

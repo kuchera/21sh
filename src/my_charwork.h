@@ -18,6 +18,8 @@ char* my_tsmerge(my_tab t, const char *sep);
 char* my_stralloc(const char* str);
 // Alloue et concatene s1 et s2
 char* my_strcat(const char *s1, const char *s2);
+// Concatene s1 et s2 et les supprime
+char* my_strcatr(char *s1, char *s2);
 // Lis une ligne entree dans la console
 char* my_readline();
 // Vide le buffer

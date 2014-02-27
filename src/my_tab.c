@@ -10,6 +10,11 @@ void my_tprint(my_tab t)
 	my_tapply(t, &f);
 }
 
+void my_tflush(my_tab t)
+{
+	t->count = 0;
+}
+
 my_tab my_tbuild(void **tab, int size)
 {
 	my_tab t = my_tnew();
@@ -113,4 +118,10 @@ void my_tfree(my_tab t)
 void* my_tlast(my_tab t)
 {
 	return my_tget(t, t->count - 1);
+}
+
+void my_tffree(my_tab t, void(*f)(void*))
+{
+	my_tapply(t, f);
+	my_tfree(t);
 }

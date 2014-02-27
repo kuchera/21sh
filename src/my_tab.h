@@ -20,6 +20,8 @@ my_tab my_tnew();
 my_tab my_tbuild(void **tab, int size);
 // Libere le tableau (elements a liberer prealablement)
 void my_tfree(my_tab t);
+// Comme my_tfree mais applique f a tous les elements avant de liberer
+void my_tffree(my_tab t, void(*f)(void*));
 // Renvoie le nb d'elements dans t
 int my_tlen(my_tab t);
 // Ajoute e dans t
@@ -34,6 +36,8 @@ void* my_tget(my_tab t, int i);
 void* my_tlast(my_tab t);
 // Supprime l'element a l'emplacement i
 void* my_trmat(my_tab t, int i);
+// Supprime tous les elements du tableau
+void my_tflush(my_tab t);
 // Applique f a tous les elements
 void my_tapply(my_tab t, void(*f)(void*));
 // Applique f a l'element i
