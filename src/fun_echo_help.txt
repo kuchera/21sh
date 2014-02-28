@@ -1,0 +1,8 @@
+NAME
+        echo - Display a line of text.
+
+DESCRIPTION
+        echo [STRING]
+
+/*little echo*/
+

@@ -1,0 +1,6 @@
+NAME
+        exit - quit the 21sh shell.
+
+DESCRIPTION
+        exit
+
