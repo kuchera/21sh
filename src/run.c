@@ -5,11 +5,14 @@ int run(int argc, char **argv)
 	print_welcome(); // Message de bienvenue
 	i_init(); // Chargement des fonctiont dans l'index
 	my_tab t;
+	int i;
 	while (1)
 	{
-		printf("%s", prompts(NULL));
+		printf("%s", prompts());
 		t = read_command();
-		i_call(t);
+		i = i_call(t);
+		if (i == NOSUCHFUNCTION21)
+			fputs("La fonction n'existe pas\n", stderr);
 		my_tffree(t, &free);
 	}
 	return SUCCESS21;

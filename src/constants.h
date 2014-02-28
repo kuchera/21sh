@@ -6,12 +6,16 @@
  */
 
 // Bon deroulement
-#define SUCCESS21 	0
+#define SUCCESS21 		0
 // Erreur critique
-#define FATAL21		1
+#define FATAL21			1
 // Comportement inattendu
-#define UNEXPECTED21	2
+#define UNEXPECTED21		2
 // Aucun resultat (continuer l'execution)
-#define NORESULTS21	3
+#define NORESULTS21		3
+// Fonction appelee inexistante
+#define NOSUCHFUNCTION21	4
+// Pas assez d'arguments
+#define NOTENOUGHARGS21		5
 
 #endif

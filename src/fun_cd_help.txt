@@ -1,0 +1,8 @@
+NAME
+	cd - Change de repertoire courant
+
+SYNOPSIS
+	cd [DOSSIER]
+
+DESCRIPTION
+	cd sans arguments remonte d'un dossier (cd = cd ..)

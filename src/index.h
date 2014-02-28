@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <string.h>
 #include "my_charwork.h"
+#include "constants.h"
 #include "my_tab.h"
 
 // Prototype de la fonction de base. Toutes les fonctions deveront respecter ce prototype.

@@ -1,0 +1,5 @@
+NAME
+	pwd - Affiche le chemin du repertoire courant
+
+SYNOPSIS
+	pwd

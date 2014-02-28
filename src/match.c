@@ -1,30 +1,17 @@
 #include "match.h"
 
-void match_quotes(my_tab *tab)
+/*static void match_quotes_fusion(my_tab t, int i)
 {
-	int i = 0;
-	short cat = 0;
-	char *s, *c;
-	my_tab t = my_tnew();
-	while (i < my_tlen(*tab))
-	{
-		s = my_tget(*tab, i);
-		my_tadd(t, s);
-		if (*s == '\"')
-			cat = 1;
-		if (cat)
-		{
-			c = my_tpop(t);
-			my_tadd(t, my_strcat(c, s));
-			free(c);
-			free(s);
-		}
-		else
-			my_tadd(t, s);
-		if (s[strlen(s) - 1] == '\"')
-			cat = 0;
-		++i;
-	}
-	my_tfree(*tab);
-	*tab = t;
+	char *a = my_trmat(t, i);
+	char *b = my_trmat(t, i);
+	my_tinsert(t, my_strcat(a, b), i);
+	free(a);
+	free(b);
+}*/
+
+void match_quotes(my_tab tab)
+{
+	//my_tab ret = my_tnew();
+	if (tab)
+		exit(0);
 }

@@ -32,6 +32,8 @@ void my_taddtab(my_tab t, void **tab, int count);
 void* my_tpop(my_tab t);
 // Retourne l'element a la position i
 void* my_tget(my_tab t, int i);
+// Insere e a la position i
+void my_tinsert(my_tab t, void *e, int i);
 // Retourne le dernier element de t
 void* my_tlast(my_tab t);
 // Supprime l'element a l'emplacement i

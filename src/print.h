@@ -12,5 +12,7 @@ void print_welcome();
 void print_help();
 // Affiche l'aide de la fonction id
 void print_man(const char *id);
+// Affiche un message d'erreur personnalise
+void print_error(int erno);
 
 #endif

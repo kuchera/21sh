@@ -16,6 +16,6 @@ int match_joker(const char *s1, const char *s2);
  * ex : cat "mon fichier.txt"
  * (les elements de tab pourront etre supprimes)
  */
-void match_quotes(my_tab *tab);
+void match_quotes(my_tab tab);
 
 #endif

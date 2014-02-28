@@ -6,6 +6,11 @@
 #include <dirent.h>
 #include <string.h>
 #include <sys/types.h>
+#include <errno.h>
+#include "constants.h"
+#include "env.h"
+#include "my_charwork.h"
+#include "my_tab.h"
 
 /*
  * Fonction de deplacement dans les fichiers

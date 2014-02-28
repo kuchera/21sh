@@ -1,5 +1,8 @@
   cat - Affichage de fichiers
+  cd - Deplacement dans les repertories
   echo - Affichage de messages
   exit - Quitte >21sh
   help - Affiche ce message d'aide
+  ls - Affiche le contenu du repertoire courant
   man - Affichage de la description des commandes
+  pwd - Affiche le repertoire courant

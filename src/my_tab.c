@@ -125,3 +125,17 @@ void my_tffree(my_tab t, void(*f)(void*))
 	my_tapply(t, f);
 	my_tfree(t);
 }
+
+void my_tinsert(my_tab t, void *e, int i)
+{
+	if (t->count >= t->size)	
+		my_trealloc(t);
+	int j = t->count;
+	t->count += 1;
+	while (j > i)
+	{
+		t->tab[j] = t->tab[j-1];
+		--j;
+	}
+	t->tab[i] = e;
+}

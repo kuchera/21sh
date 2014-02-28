@@ -31,7 +31,7 @@ int i_call(my_tab args)
 {
 	command f = i_get(my_tget(args, 0));
 	if (!f)
-		return -1;
+		return NOSUCHFUNCTION21;
 	return f(args->count, (char**)(args->tab), stdout, stdout);
 }
 

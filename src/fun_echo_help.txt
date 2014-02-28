@@ -3,6 +3,3 @@ NAME
 
 DESCRIPTION
         echo [STRING]
-
-/*little echo*/
-

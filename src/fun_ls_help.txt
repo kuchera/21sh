@@ -1,0 +1,11 @@
+NAME
+	ls - Liste le contenu des repertoires
+
+SYNOPSIS
+	ls [OPTIONS]
+
+DESCRIPTION
+	Liste des options :
+
+	-a
+		Affiche egalement les fichiers commencant par '.'

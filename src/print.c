@@ -1,5 +1,12 @@
 #include "print.h"
 
+void print_error(int erno)
+{
+	char s[30];
+	if (snprintf(s, 30, "error_%d.txt", erno) <= 29)
+		my_fprint(s, stdout);
+}
+
 void print_welcome()
 {
 	my_fprint("welcome.txt", stdout);

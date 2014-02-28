@@ -1,26 +1,19 @@
 #include "env.h"
 
-char* prompts(char *s)
+char* prompts()
 {
-	static char *mess = NULL;
-	if (s)
-	{
-		if (mess)
-			free(mess);
-		mess = s;
-	}
-	else if (!mess)
-	{
-		char *p = pathtos(path(NULL));
-		mess = my_strcat(p, " > ");
-		free(p);
-	}
+	char *p = pathtos(path(NULL));
+	char *mess = my_strcat(p, " > ");
+	free(p);
 	return mess;
 }
 
 char* pathtos(my_tab t)
 {
-	return my_smerge((char**)(t->tab), t->count, PATH_SEPARATORS);
+	char *s = my_smerge((char**)(t->tab), t->count, PATH_SEPARATORS);
+	char *r = my_strcat(s, PATH_SEPARATORS);
+	free(s);
+	return r;
 }
 
 char* home()
@@ -63,4 +56,25 @@ void path_up()
 		my_tpop(t);
 		path(t);
 	}
+}
+
+void path_root()
+{
+	my_tab t = path(NULL);
+	my_tapply(t, &free);
+	my_tflush(t);
+	my_tadd(t, my_stralloc(""));
+}
+
+int path_len()
+{
+	return my_tlen(path(NULL)) - 1;
+}
+
+void path_home()
+{
+	my_tab t = path(NULL);
+	my_tapply(t, &free);
+	my_tfree(t);
+	path(build_path(home()));
 }

@@ -19,7 +19,13 @@ my_tab path(my_tab path);
 void path_add(const char *dir);
 // Remonte dans le repertoire parent
 void path_up();
+// Retourne le nb de dossiers dans path
+int path_len();
+// Va a la racine
+void path_root();
+// Va au home
+void path_home();
 // Definit ou retourne le PS1
-char* prompts(char *s);
+char* prompts();
 
 #endif
