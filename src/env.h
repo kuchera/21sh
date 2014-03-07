@@ -25,6 +25,8 @@ int path_len();
 void path_root();
 // Va au home
 void path_home();
+// Retourne le path sous forme de string
+char* path_string();
 // Definit ou retourne le PS1
 char* prompts();
 

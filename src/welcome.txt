@@ -1,1 +1,2 @@
  Terminal >21sh
+help pour l'aide.

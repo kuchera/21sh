@@ -78,3 +78,8 @@ void path_home()
 	my_tfree(t);
 	path(build_path(home()));
 }
+
+char* path_string()
+{
+	return pathtos(path(NULL));
+}
