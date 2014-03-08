@@ -4,6 +4,8 @@
 #include <stdio.h>
 #include <string.h>
 #include <errno.h>
+#include "my_charwork.h"
+#include "env.h"
 
 /*
  * Fonction de lecture de fichiers

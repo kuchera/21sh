@@ -5,6 +5,10 @@ int fun_cat(int argc, char **argv, FILE* out, FILE* err)
 	int i;
 	int c;
 	FILE *f;
+	char *path;
+	char *s = path_string();
+	path = my_strcat(s, "/");
+	free(s);
 	if (argc < 0)
 	{
 		fputs("fun_cat : Nombre d'arguments negatif", err);
@@ -12,13 +16,8 @@ int fun_cat(int argc, char **argv, FILE* out, FILE* err)
 	}
 	for (i=1 ; i<argc ; ++i)
 	{
-		if (*(argv[i]) == '-')
-		{
-			// Args
-		}
-		else
-		{
-			f = fopen(argv[i], "r");
+			s = my_strcat(path, argv[i]);
+			f = fopen(s, "r");
 			if (!f)
 				fprintf(err, "fun_cat : %s : %s\n", argv[i], strerror(errno));
 			else
@@ -28,7 +27,8 @@ int fun_cat(int argc, char **argv, FILE* out, FILE* err)
 				if (fclose(f))
 					fprintf(err, "fun_cat : %s : %s\n", argv[i], strerror(errno));
 			}
-		}
+			free(s);
 	}
+	free(path);
 	return 0;
 }
