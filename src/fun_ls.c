@@ -12,13 +12,13 @@ int fun_ls(int argc, char **argv, FILE *out, FILE *err)
 		return UNEXPECTED21;
 	}
 	struct dirent *ent = readdir(dir);
-	if (argc == 2 && !strcmp(argv[1], "-a"))
+	if (argc >= 2 && !strcmp(argv[1], "-a"))
 		a = 1;
 	else
 		a = 0;
 	while (ent)
 	{
-		if (a || (!a && ent->d_name[0] != '.'))
+		if (a || ent->d_name[0] != '.')
 		{
 			fputs(ent->d_name, out);
 			fputc('\n', out);
