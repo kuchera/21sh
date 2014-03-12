@@ -21,6 +21,8 @@ void i_add(const char *id, command f);
 void i_free();
 // Renvoie le nombre de fonctions dans l'index
 int i_count();
+// Renvoie l'id de la commande a la position i
+char* i_getat(int i);
 // Initialise l'index
 void i_init();
 

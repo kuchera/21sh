@@ -1,2 +1,2 @@
  Terminal >21sh
-help pour l'aide.
+type help for help

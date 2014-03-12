@@ -1,5 +1,5 @@
 NAME
-        echo - Display a line of text.
+        echo 	- Display a line of text.
 
 DESCRIPTION
         echo [STRING]

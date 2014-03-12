@@ -1,6 +1,6 @@
 NAME
-        man - print the manuel page of a command  on the standard output
+        man 	- Print the manual page of a command  on the standard output
 
 DESCRIPTION
-        man [Command]
+        man [COMMAND]
 

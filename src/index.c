@@ -76,3 +76,11 @@ int i_count()
 {
 	return my_tlen(index(NULL));
 }
+
+char* i_getat(int i)
+{
+	my_tab t = index(NULL);
+	struct el *e = my_tget(t, i);
+	char *s = e->id;
+	return s;
+}

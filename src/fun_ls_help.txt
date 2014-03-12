@@ -1,11 +1,10 @@
 NAME
-	ls - Liste le contenu des repertoires
+	ls 	- List the content of a directory
 
 SYNOPSIS
 	ls [OPTIONS]
 
 DESCRIPTION
-	Liste des options :
+	Option list :
 
-	-a
-		Affiche egalement les fichiers commencant par '.'
+	-a	Displays also files beginning by "."

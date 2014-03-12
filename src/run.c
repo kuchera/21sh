@@ -12,7 +12,7 @@ int run(int argc, char **argv)
 		t = read_command();
 		i = i_call(t);
 		if (i == NOSUCHFUNCTION21)
-			fputs("La fonction n'existe pas\n", stderr);
+			fputs("Function doesn't exist\n", stderr);
 		my_tffree(t, &free);
 	}
 	return SUCCESS21;

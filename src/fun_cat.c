@@ -9,11 +9,6 @@ int fun_cat(int argc, char **argv, FILE* out, FILE* err)
 	char *s = path_string();
 	path = my_strcat(s, "/");
 	free(s);
-	if (argc < 0)
-	{
-		fputs("fun_cat : Nombre d'arguments negatif", err);
-		return -1;
-	}
 	for (i=1 ; i<argc ; ++i)
 	{
 			s = my_strcat(path, argv[i]);

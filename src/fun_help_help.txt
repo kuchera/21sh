@@ -1,5 +1,5 @@
 NAME
-        help - print every available command on the standard output
+        help 	- Print every available command on the standard output
 
 DESCRIPTION
         help

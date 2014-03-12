@@ -1,5 +1,5 @@
 NAME
-	pwd - Affiche le chemin du repertoire courant
+	pwd 	- Displays the current directory path
 
 SYNOPSIS
 	pwd

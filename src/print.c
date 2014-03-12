@@ -1,11 +1,5 @@
 #include "print.h"
 
-void print_error(int erno)
-{
-	char s[30];
-	if (snprintf(s, 30, "error_%d.txt", erno) <= 29)
-		my_fprint(s, stdout);
-}
 
 void print_welcome()
 {
@@ -14,7 +8,41 @@ void print_welcome()
 
 void print_help()
 {
-	my_fprint("help.txt", stdout);
+	char *s;
+	int i;
+	for (i=0 ; i<i_count() ; ++i)
+	{
+		s = i_getat(i);
+		print_desc(s);
+	}
+}
+
+void print_desc(const char *id)
+{
+	char *s = my_strcat("fun_", id);
+	char *d = my_strcat(s, "_help.txt");
+	free(s);
+	FILE *f = fopen(d, "r");
+	free(d);
+	if (f)
+	{
+		char c = getc(f);
+		while (c != EOF && c != '\n')
+			c = getc(f);
+		if (c != EOF)
+		{
+			c = getc(f);
+			while (c != EOF && c != '\n')
+			{
+				putchar(c);
+				c = getc(f);
+			}
+			putchar('\n');
+		}
+		fclose(f);
+	}
+	else
+		putchar('\n');
 }
 
 void print_man(const char *id)

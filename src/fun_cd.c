@@ -50,7 +50,7 @@ int fun_cd(int argc, char **argv, FILE *out, FILE *err)
 			fun_cd_move(my_tget(t, i));
 		else
 		{
-			fputs("fun_cd : Le dossier n'existe pas\n", err);
+			fputs("fun_cd : Directory doesn't exist\n", err);
 			i = my_tlen(t);
 		}
 		fflush(stdout);

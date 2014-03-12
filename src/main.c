@@ -4,7 +4,7 @@ int main(int argc, char **argv)
 {
 	if (argc == 2 && !strcmp(argv[1], "-t"))
 	{
-		puts(path_string());
+		puts("=== TESTS ===");
 		return 0;
 	}
 	else
