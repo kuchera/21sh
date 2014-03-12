@@ -10,7 +10,11 @@ obj::
 	${CC} -c ${CSRC}
 
 out:: all
-	rm -f *.o *~
+	rm -rf out/
+	mkdir out
+	cp ${EXEC} *.txt out/
+	rm -f *.o *~ ${EXEC}
 
 clean::
+	rm -rf out
 	rm -f *.o *~ ${EXEC}

@@ -4,3 +4,7 @@ by ShadowTeam :
 	Alain GBEDO
 	Yassine RAZANI
 	Kevin JULLY
+
+goto src/
+execute make out
+The executable and all neede files will be in the src/out/ dir
