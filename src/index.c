@@ -15,7 +15,7 @@ static void i_free_el(void *e)
 	free(elt);
 }
 
-static my_tab index(my_tab t)
+static my_tab mindex(my_tab t)
 {
 	static my_tab tab = NULL;
 	if (t)
@@ -37,7 +37,7 @@ int i_call(my_tab args)
 
 command i_get(const char *id)
 {
-	my_tab t = index(NULL);
+	my_tab t = mindex(NULL);
 	command f = NULL;
 	struct el *e;
 	int i = 0, c = i_count();
@@ -59,27 +59,27 @@ void i_add(const char *id, command f)
 	struct el *e = malloc(sizeof(struct el));
 	e->id = my_stralloc(id);
 	e->f = f;
-	my_tab t = index(NULL);
+	my_tab t = mindex(NULL);
 	my_tadd(t, e);
-	index(t);
+	mindex(t);
 }
 
 void i_free()
 {
-	my_tab t = index(NULL);
+	my_tab t = mindex(NULL);
 	my_tapply(t, &i_free_el);
 	my_tfree(t);
-	index(my_tnew());
+	mindex(my_tnew());
 }
 
 int i_count()
 {
-	return my_tlen(index(NULL));
+	return my_tlen(mindex(NULL));
 }
 
 char* i_getat(int i)
 {
-	my_tab t = index(NULL);
+	my_tab t = mindex(NULL);
 	struct el *e = my_tget(t, i);
 	char *s = e->id;
 	return s;
