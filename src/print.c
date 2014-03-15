@@ -51,6 +51,7 @@ void print_man(const char *id)
 	strcpy(f, "fun_");
 	strcat(f, id);
 	strcat(f, "_help.txt");
-	my_fprint(f, stdout);
+	if (my_fprint(f, stdout))
+		puts("No manual for this command");
 	free(f);
 }

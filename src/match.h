@@ -6,6 +6,11 @@
 #include "my_charwork.h"
 
 /*
+ * Effectue les traitements de reconnaissance
+ * Modifie le tableau
+ */
+void match(my_tab argv);
+/*
  * Fonction de gestion des joker (*)
  * La chaine s1 peut contenir des joker (s2 sans)
  * La fonction retourne 1 si la chaine s1 correspond a la chaine s2, 0 si non

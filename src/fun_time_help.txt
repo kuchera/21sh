@@ -1,0 +1,5 @@
+NAME
+	time 	- Measure execution time of commands
+
+SYNOPSIS
+	time COMMAND

@@ -2,6 +2,7 @@
 #define INPUT_DEFINE
 
 #include "my_charwork.h"
+#include "match.h"
 
 /*
  * Lit une ligne sur l'entree standard

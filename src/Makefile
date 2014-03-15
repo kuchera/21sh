@@ -1,7 +1,7 @@
 CSRC= *.c
 COBJ= $(CSRC:.c=.o)
 EXEC= shell
-CC= gcc -Wall -Wextra -std=c99 -O2
+CC= gcc -Wall -Wextra -O2
 
 all:: obj
 	${CC} -o ${EXEC} ${COBJ}

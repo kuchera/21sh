@@ -2,8 +2,18 @@
 
 int run(int argc, char **argv)
 {
-	print_welcome(); // Message de bienvenue
 	i_init(); // Chargement des fonctiont dans l'index
+	if (argc >= 2)
+        {
+                command f = i_get(argv[1]);
+                if (!f)
+                        printf("No such command : %s\n", argv[1]);
+                else
+                        (*f)(argc-1, argv+1, stdout, stderr);
+		exit(0);
+        }
+
+	print_welcome(); // Message de bienvenue
 	my_tab t;
 	int i;
 	while (1)
