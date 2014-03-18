@@ -11,7 +11,10 @@ int fun_cat(int argc, char **argv, FILE* out, FILE* err)
 	free(s);
 	for (i=1 ; i<argc ; ++i)
 	{
-			s = my_strcat(path, argv[i]);
+			if (argv[i][0] != '/')
+				s = my_strcat(path, argv[i]);
+			else
+				s = my_stralloc(argv[i]);
 			f = fopen(s, "r");
 			if (!f)
 				fprintf(err, "fun_cat : %s : %s\n", argv[i], strerror(errno));
