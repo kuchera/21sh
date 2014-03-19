@@ -12,7 +12,6 @@
  * Sur la sortie standard :
  * ECHO
  */
-
-int fun_echo(int argc, char **argv, FILE* out, FILE* err);
+int fun_echo(int argc, char **argv);
 
 #endif

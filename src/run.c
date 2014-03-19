@@ -9,7 +9,7 @@ int run(int argc, char **argv)
                 if (!f)
                         printf("No such command : %s\n", argv[1]);
                 else
-                        (*f)(argc-1, argv+1, stdout, stderr);
+                        (*f)(argc-1, argv+1);
 		exit(0);
         }
 

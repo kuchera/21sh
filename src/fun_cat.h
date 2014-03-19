@@ -13,6 +13,6 @@
  * du fichier FILENAME dans la
  * console
  */
-int fun_cat(int argc, char **argv, FILE *out, FILE *err);
+int fun_cat(int argc, char **argv);
 
 #endif

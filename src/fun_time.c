@@ -1,6 +1,6 @@
 #include "fun_time.h"
 
-int fun_time(int argc, char **argv, FILE *out, FILE *err)
+int fun_time(int argc, char **argv)
 {
 	if (argc <= 1)
 		return NORESULTS21;
@@ -11,7 +11,7 @@ int fun_time(int argc, char **argv, FILE *out, FILE *err)
 	pid_t pid = fork();
 	if (pid == -1)
 	{
-		fprintf(err, "fun_time : fork : %s\n", strerror(errno));
+		fprintf(stderr, "fun_time : fork : %s\n", strerror(errno));
 		return FATAL21;
 	}
 	if (pid)
@@ -23,10 +23,10 @@ int fun_time(int argc, char **argv, FILE *out, FILE *err)
 	else
 	{
 		command f = i_get(argv[1]);
-		(*f)(argc-1,argv+1,out,err);
+		(*f)(argc-1,argv+1);
 		exit(0);
 	}
 	long diff = te.tv_nsec - ts.tv_nsec;
-	fprintf(out, "%ld\n", diff);
+	printf("%ld\n", diff);
 	return SUCCESS21;
 }

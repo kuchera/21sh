@@ -12,6 +12,6 @@
 /*
  * Affiche le contenu du repertoire courant
  */
-int fun_ls(int argc, char **argv, FILE *out, FILE *err);
+int fun_ls(int argc, char **argv);
 
 #endif

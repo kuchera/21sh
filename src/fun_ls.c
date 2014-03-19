@@ -1,6 +1,6 @@
 #include "fun_ls.h"
 
-int fun_ls(int argc, char **argv, FILE *out, FILE *err)
+int fun_ls(int argc, char **argv)
 {
 	char *p = pathtos(path(NULL));
 	DIR *dir = opendir(p);
@@ -8,7 +8,7 @@ int fun_ls(int argc, char **argv, FILE *out, FILE *err)
 	free(p);
 	if (!dir)
 	{
-		fprintf(err, "fun_ls : %s\n", strerror(errno));
+		fprintf(stderr, "fun_ls : %s\n", strerror(errno));
 		return UNEXPECTED21;
 	}
 	struct dirent *ent = readdir(dir);
@@ -20,8 +20,7 @@ int fun_ls(int argc, char **argv, FILE *out, FILE *err)
 	{
 		if (a || ent->d_name[0] != '.')
 		{
-			fputs(ent->d_name, out);
-			fputc('\n', out);
+			puts(ent->d_name);
 		}
 		ent = readdir(dir);
 	}

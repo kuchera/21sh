@@ -31,7 +31,7 @@ static void fun_cd_move(const char *s)
 		path_add(s);
 }
 
-int fun_cd(int argc, char **argv, FILE *out, FILE *err)
+int fun_cd(int argc, char **argv)
 {
 	if (argc <= 1)
 	{
@@ -43,21 +43,18 @@ int fun_cd(int argc, char **argv, FILE *out, FILE *err)
 	int i = 0;
 	while (i < my_tlen(t))
 	{
-		fflush(stdout);
 		if (	!strcmp("", my_tget(t, i)) || 
 			!strcmp("~", my_tget(t, i)) ||
 			fun_cd_exist(my_tget(t, i))  )
 			fun_cd_move(my_tget(t, i));
 		else
 		{
-			fputs("fun_cd : Directory doesn't exist\n", err);
+			fputs("fun_cd : Directory doesn't exist\n", stderr);
 			i = my_tlen(t);
 		}
-		fflush(stdout);
 		++i;
 	}
 	my_tapply(t, &free);
 	my_tfree(t);
 	return SUCCESS21;
-	if (out) return 0;
 }

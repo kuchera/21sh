@@ -8,8 +8,7 @@
 #include "my_tab.h"
 
 // Prototype de la fonction de base. Toutes les fonctions deveront respecter ce prototype.
-// Arguments : argc, argv, out, errout
-typedef int(*command)(int,char**,FILE*, FILE*);
+typedef int(*command)(int,char**);
 
 // Recupere la fonction correspondante a la commande id
 command i_get(const char *id);

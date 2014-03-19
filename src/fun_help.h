@@ -8,6 +8,6 @@
 /*
  * Affiche le message d'aide
  */
-int fun_help(int argc, char **argv, FILE *out, FILE *err);
+int fun_help(int argc, char **argv);
 
 #endif

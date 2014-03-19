@@ -3,3 +3,9 @@ exec script
 streams
 quotes
 jokers
+commant type : int(int,char**)
+IO: stdout, stderr ( then redirect)
+Correction cd (go in file)
+comm apply : 
+  split ';' => char***
+  redirect : > >> >2 >>2 | >1&2 >>1&2 (fork)

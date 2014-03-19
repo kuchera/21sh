@@ -1,19 +1,17 @@
 #include "fun_echo.h"
 
-int fun_echo(int argc, char **argv, FILE* out, FILE* err)
+int fun_echo(int argc, char **argv)
 {
 	if (argc > 1) 
 	{
-    		int n = 2;
-    		fprintf(out,"%s", argv[1]);
+    		int n = 1;
     		while (n < argc) 
 		{
-      			fprintf(out," %s", argv[n]);
+      			fputs(argv[n], stdout);
       			n = n+1;
     		}
   	}
-  	fprintf(out,"\n");
+	putchar('\n');
   	return 0;
-	if (err) return 0;
 }
 

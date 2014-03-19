@@ -7,6 +7,6 @@
 /*
  * Quitte le programme
  */
-int fun_exit(int argc, char **argv, FILE *out, FILE *err);
+int fun_exit(int argc, char **argv);
 
 #endif

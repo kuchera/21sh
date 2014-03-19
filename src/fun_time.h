@@ -17,6 +17,6 @@
  * Affiche le temps d'execution de la fonction
  * passee dans les arguments
  */
-int fun_time(int argc, char **argv, FILE *out, FILE *err);
+int fun_time(int argc, char **argv);
 
 #endif

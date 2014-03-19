@@ -1,11 +1,10 @@
 #include "fun_pwd.h"
 
-int fun_pwd(int argc, char **argv, FILE *out, FILE *err)
+int fun_pwd(int argc, char **argv)
 {
 	char *s = pathtos(path(NULL));
-	fputs(s, out);
-	fputc('\n', out);
+	puts(s);
 	free(s);
 	return SUCCESS21;
-	if (argc && argv && err) return 0;
+	if (argc && argv) return 0;
 }

@@ -8,6 +8,6 @@
 /*
  * Affiche le man du premier argument
  */
-int fun_man(int argc, char **argv, FILE *out, FILE *err);
+int fun_man(int argc, char **argv);
 
 #endif

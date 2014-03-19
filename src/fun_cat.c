@@ -1,6 +1,6 @@
 #include "fun_cat.h"
 
-int fun_cat(int argc, char **argv, FILE* out, FILE* err)
+int fun_cat(int argc, char **argv)
 {
 	int i;
 	int c;
@@ -17,13 +17,13 @@ int fun_cat(int argc, char **argv, FILE* out, FILE* err)
 				s = my_stralloc(argv[i]);
 			f = fopen(s, "r");
 			if (!f)
-				fprintf(err, "fun_cat : %s : %s\n", argv[i], strerror(errno));
+				fprintf(stderr, "fun_cat : %s : %s\n", argv[i], strerror(errno));
 			else
 			{
 				while ((c=fgetc(f)) != EOF)
-					fputc(c, out);
+					putchar(c);
 				if (fclose(f))
-					fprintf(err, "fun_cat : %s : %s\n", argv[i], strerror(errno));
+					fprintf(stderr, "fun_cat : %s : %s\n", argv[i], strerror(errno));
 			}
 			free(s);
 	}

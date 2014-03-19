@@ -8,6 +8,6 @@
 /*
  * Affiche le repertoire courant
  */
-int fun_pwd(int argc, char **argv, FILE *out, FILE *err);
+int fun_pwd(int argc, char **argv);
 
 #endif
