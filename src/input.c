@@ -18,6 +18,5 @@ my_tab read_command()
 		else
 			++i;
 	}
-	match(t);
 	return t;
 }

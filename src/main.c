@@ -9,6 +9,9 @@ int main(int argc, char **argv)
 	{
 		puts("=== TESTS ===");
 		my_tab t = read_command();
+		printf("argc: %d\n", my_tlen(t));
+		match(t);
+		printf("argc: %d\n", my_tlen(t));
 		my_tprint(t);
 		return 0;
 	}

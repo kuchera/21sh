@@ -8,45 +8,27 @@ void match(my_tab argv)
 void match_quotes(my_tab tab)
 {
 	my_tab t = my_tnew();
-	int isq = 0;
-	char *s;
-	char *s2;
-	char *s3;
-	size_t l;
+	char *s, *d;
 	while (my_tlen(tab) > 0)
 		my_tadd(t, my_tpop(tab));
-	while (my_tlen(tab) > 0)
+	while (my_tlen(t) > 0)
 	{
 		s = my_tpop(t);
-		l = strlen(s) - 1;
-		if (isq)
+		if (s != NULL && s[0] == '\"')
 		{
-			if (s[l] == '\"')
+			strcpy(s, s+1);
+			while (my_tlen(t) > 0 && s[strlen(s) - 1] != '\"')
 			{
-				isq = 0;
-				s[l] = 0;
+				d = my_tpop(t);
+				s = realloc(s, strlen(s) + strlen(d) + 2);
+				strcat(s, " ");
+				strcat(s, d);
+				free(d);
 			}
-			s2 = my_tpop(tab);
-			s3 = malloc(strlen(s) + strlen(s2) + 2);
-			sprintf(s3, "%s %s", s, s2);
-			free(s);
-			free(s2);
-			my_tadd(tab, s3);
+			if (s[strlen(s) - 1] == '\"')
+				s[strlen(s) - 1] = 0;
 		}
-		else
-		{
-			if (*s == '\"')
-			{
-				isq = 1;
-				++s;
-				--l;
-				if (s[l] == '\"')
-				{
-					isq = 0;
-					s[l] = 0;
-				}
-			}
-			my_tadd(tab, s);
-		}
+		my_tadd(tab, s);
 	}
+	free(t);
 }
