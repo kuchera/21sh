@@ -29,6 +29,8 @@ static my_tab mindex(my_tab t)
 
 int i_call(my_tab args)
 {
+	if (my_tlen(args) <= 0)
+		return 0;
 	command f = i_get(my_tget(args, 0));
 	if (!f)
 		return NOSUCHFUNCTION21;
