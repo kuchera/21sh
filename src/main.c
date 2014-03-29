@@ -5,6 +5,7 @@
 
 int main(int argc, char **argv)
 {
+	i_init(); // Initialisation de l'index de fonctions
 	if (argc == 2 && !strcmp(argv[1], "-t"))
 	{
 		puts("=== TESTS ===");

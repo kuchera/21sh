@@ -2,29 +2,21 @@
 
 int run(int argc, char **argv)
 {
-	i_init(); // Chargement des fonctiont dans l'index
 	if (argc >= 2)
         {
-                command f = i_get(argv[1]);
-                if (!f)
-                        printf("No such command : %s\n", argv[1]);
-                else
-                        (*f)(argc-1, argv+1);
-		exit(0);
+		my_tab t = my_tbuild((void**)(argv + 1), argc - 1);
+		return apply(t);
         }
 
 	print_welcome(); // Message de bienvenue
 	my_tab t;
-	int i;
 	while (1)
 	{
 		printf("%s", prompts());
 		t = read_command();
-		i = i_call(t);
-		if (i == NOSUCHFUNCTION21)
-			fputs("Function doesn't exist\n", stderr);
+		apply(t);
 		my_tffree(t, &free);
 	}
-	return SUCCESS21;
+	return FATAL21;
 	if (argc && argv) return 0;
 }
