@@ -1,0 +1,9 @@
+NAME
+	clear 	- Clear the terminal screen
+
+SYNOPSIS
+	clear
+
+DESCRIPTION
+       clear  clears  your screen if this is possible.
+       clear ignores any command-line parameters that may be present.
