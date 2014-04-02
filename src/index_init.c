@@ -10,6 +10,7 @@
 #include "fun_man.h"
 #include "fun_pwd.h"
 #include "fun_time.h"
+#include "fun_rm.h"
 
 void i_init()
 {
@@ -23,4 +24,5 @@ void i_init()
 	i_add("man", &fun_man);
 	i_add("pwd", &fun_pwd);
 	i_add("time", &fun_time);
+	i_add("rm", &fun_rm);
 }
