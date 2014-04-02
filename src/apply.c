@@ -25,68 +25,48 @@ static my_tab a_first(my_tab t, const char *sep)
 	return tt;
 }
 
-static int a_contains(my_tab t, const char *s)
+static char* a_getff(my_tab t, const char *sep)
 {
 	int i = 0;
+	char *s = NULL;
 	while (i < my_tlen(t))
 	{
-		if (!strcmp(s, my_tget(t, i)))
-			return i;
+		if (!strcmp(my_tget(t, i), sep))
+		{
+			my_trmat(t, i);
+			if (i < my_tlen(t))
+				return my_trmat(t, i);
+		}
 		++i;
 	}
-	return -1;
+	return s;
 }
 
-static int a_run(my_tab t, int out, int err, int in)
+static int a_getout(my_tab t)
 {
-	
+	int fd = -1;
+	char *s = a_getff(t, ">>");
+	if (s)
+	{
+		s = my_strcat(path_string(), s);
+		fd = open(s, O_CREAT | O_WRONLY | O_APPEND, 0666);
+		if (fd == -1)
+			fprintf(stderr, "%s: %s\n", s, strerror(errno));
+		free(s);
+	}
+	return fd;
 }
 
 static int a_redirect(my_tab t)
 {
-	int os = -1;
-	char *f, *ff;
-	int i;
-
-	while ((i = a_contains(t, ">")) > 0)
+	int ret = 0;
+	int fd = a_getout(t);
+	if (fd >= 0)
 	{
-		if (i + 2 != my_tlen(t))
-		{
-			if (os)
-				close(os);
-			ff = my_trmat(t, i+1);
-			f = my_strcat(path_string(), ff);
-			os = open(f, O_CREAT | O_WRONLY | O_TRUNC);
-			free(f);
-			if (!os)
-			{
-				fprintf(stderr, "%s : %s", ff, strerror(errno));
-				return 1;
-			}
-		}
-		my_trmat(t, i);
-		oa = 0;
+		ssize_t w = write(fd, "coucou\n", 7); if (!w) w=0;
+		close(fd);
 	}
-
-	while ((i = a_contains(t, ">>")) > 0)
-	{
-		if (i + 2 != my_tlen(t))
-		{
-			if (os)
-				close(os);
-			ff = my_trmat(t, i+1);
-			f = my_strcat(path_string(), ff);
-			os = open(f, O_CREAT | O_WRONLY | O_TRUNC);
-			free(f);
-			if (!os)
-			{
-				fprintf(stderr, "%s : %s", ff, strerror(errno));
-				return 1;
-			}
-		}
-		my_trmat(t, i);
-		oa = 0;
-	}
+	return ret;
 }
 
 // === FUNCTIONS ===
@@ -99,6 +79,7 @@ int apply(my_tab t)
 	while (my_tlen(tc) > 0)
 	{
 		tt = a_first(tc, ";");
+		a_redirect(tt); // TEST
 		i = i_call(tt);
 		if (i == NOSUCHFUNCTION21)
 			puts("No such function.");
