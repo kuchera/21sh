@@ -1,5 +1,5 @@
 NAME
-        rm     - remove the file
+	rm	- remove the file
 
 DESCRIPTION
         rm [FILES]
