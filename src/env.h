@@ -2,6 +2,7 @@
 #define ENV_DEFINE
 
 #include <stdlib.h>
+#include <unistd.h>
 #include "my_charwork.h"
 #include "my_tab.h"
 
