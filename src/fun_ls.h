@@ -15,6 +15,4 @@
  */
 int fun_ls(int argc, char **argv);
 
-void sexy_print(my_tab t);
-
 #endif
