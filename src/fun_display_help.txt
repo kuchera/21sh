@@ -1,0 +1,5 @@
+NAME
+        display	- displays images
+
+DESCRIPTION
+	display [IMG...]

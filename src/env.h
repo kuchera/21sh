@@ -8,6 +8,8 @@
 
 #define PATH_SEPARATORS	"/"
 
+// Retourne le repertoire d'appel
+char* call_dir();
 // Retourne le repertoire courant (ne pas modifier)
 char* home();
 // Retourne le tableau construit a partir de path

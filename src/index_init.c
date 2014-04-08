@@ -3,6 +3,7 @@
 #include "fun_cat.h"
 #include "fun_cd.h"
 #include "fun_clear.h"
+#include "fun_display.h"
 #include "fun_echo.h"
 #include "fun_exit.h"
 #include "fun_help.h"
@@ -17,6 +18,7 @@ void i_init()
 	i_add("cat", &fun_cat);
 	i_add("cd", &fun_cd);
 	i_add("clear", &fun_clear);
+	i_add("display", &fun_display);
 	i_add("echo", &fun_echo);
 	i_add("exit", &fun_exit);
 	i_add("help", &fun_help);

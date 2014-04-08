@@ -21,7 +21,7 @@ let show img dst =
 let main () =
   begin
     if Array.length (Sys.argv) < 2 then
-      failwith "Il manque le nom du fichier!";
+      exit 0;
     sdl_init ();
     for i = 1 to (Array.length (Sys.argv))-1 do
    	let img =  Sdlloader.load_image Sys.argv.(i) in

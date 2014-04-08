@@ -5,16 +5,21 @@ CC= gcc -Wall -Wextra -O2
 
 all:: obj
 	${CC} -o ${EXEC} ${COBJ}
+	make ocaml
 
 obj::
 	${CC} -c ${CSRC}
 
 out:: all
-	rm -rf out/
 	mkdir out
-	cp ${EXEC} *.txt out/
-	rm -f *.o *~ ${EXEC}
+	cp ${EXEC} *.txt fun_display out/
+	make clean
 
 clean::
-	rm -rf out
 	rm -f *.o *~ ${EXEC}
+	rm -f fun_display
+
+ocaml::
+	cd fun_displayo && make
+	cp fun_displayo/fun_display ./
+	cd fun_displayo && make clean

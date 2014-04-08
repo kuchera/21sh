@@ -12,8 +12,6 @@ int apply(my_tab t)
 			i = redirect(tt);
 		else
 			i = i_call(tt);
-		if (i == NOSUCHFUNCTION21)
-			fprintf(stderr, "%s: No such function.\n", (char*)my_tget(tt, 0));
 		my_tfree(tt);
 		if (i != 0)
 			break;
