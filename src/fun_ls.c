@@ -50,7 +50,7 @@ void sexy_print(my_tab t)
 	struct winsize w;
 	ioctl(0, TIOCGWINSZ, &w);
 	int nb_columns = w.ws_col;
-	int nb_to_print = (nb_columns / taillemax)-1;
+	int nb_to_print = (nb_columns / taillemax);
 	
 
 	//printf("%d\t%d\t%d",taillemax, nb_columns, nb_to_print);
