@@ -3,6 +3,7 @@
 
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
 
 typedef struct my_tab *my_tab;
 struct my_tab
@@ -48,5 +49,7 @@ void my_tapplyto(my_tab t, void(*f)(void*), int i);
 int my_tassert(my_tab t, int(*f)(void*));
 // Affiche chaque element de t (doivent etre des char*)
 void my_tprint(my_tab t);
+//Trie les elements de t(doivent etre des char*)
+void my_tsort(my_tab t);
 
 #endif

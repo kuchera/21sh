@@ -139,3 +139,25 @@ void my_tinsert(my_tab t, void *e, int i)
 	}
 	t->tab[i] = e;
 }
+
+
+void my_tsort(my_tab t)
+{
+	int last_swap = 1;
+	int i;
+	void *tab;
+	while (last_swap)
+	{
+		last_swap = 0;
+		for( i = 0; i < (t->count)-1; i++)
+		{
+		  if (strcmp((t->tab[i]),(t->tab[i+1])) > 0)
+		  {	
+			tab = t->tab[i];
+			(t->tab[i]) = t->tab[i+1];
+			t->tab[i+1] = tab;
+			last_swap = 1;
+		  }
+		}		
+	}
+}

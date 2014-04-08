@@ -6,6 +6,10 @@ int fun_ls(int argc, char **argv)
 	DIR *dir = opendir(p);
 	int a;
 	free(p);
+
+	size_t i = 0;
+	my_tab temp = my_tnew();
+
 	if (!dir)
 	{
 		fprintf(stderr, "fun_ls : %s\n", strerror(errno));
@@ -20,10 +24,49 @@ int fun_ls(int argc, char **argv)
 	{
 		if (a || ent->d_name[0] != '.')
 		{
-			puts(ent->d_name);
+			my_tadd(temp,(ent->d_name));
+			//puts(my_tget(temp, i));
+			i++;
 		}
 		ent = readdir(dir);
 	}
+	my_tsort(temp);
+	sexy_print(temp);
+	
 	closedir(dir);
 	return SUCCESS21;
+}
+
+void sexy_print(my_tab t)
+{
+	size_t taillemax = 0;
+	int i, j;
+	size_t k;
+	
+	for( i = 0; i < t->count; i++)
+		if (taillemax < strlen((t->tab[i])))
+			taillemax = strlen((t->tab[i]));
+
+	struct winsize w;
+	ioctl(0, TIOCGWINSZ, &w);
+	int nb_columns = w.ws_col;
+	int nb_to_print = (nb_columns / taillemax)-1;
+	
+
+	//printf("%d\t%d\t%d",taillemax, nb_columns, nb_to_print);
+
+	for (i = 0; i < (t->count)-1;)
+	{
+		for (j = 0; j < nb_to_print-1 && t->tab[i] != NULL;j++)
+		{
+			printf("%s",(char*)(t->tab[i]));
+			if (strlen((t->tab[i])) < taillemax)
+				for(k = strlen((t->tab[i])); k < taillemax;k++)
+					printf(" ");
+			
+			printf("  ");
+			i++;
+		}
+		printf("\n");
+	}
 }
