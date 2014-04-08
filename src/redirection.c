@@ -60,10 +60,6 @@ void a_getoutf(my_tab t, my_tab out, my_tab out2, const char *sep, int append)
 			if (out2)
 				my_tadd(out2, i);
 		}
-		puts(">>> OUT");
-		if (i && *i)
-			*i = write(*i, "test\n", 5);
-		puts(s); // ====================
 		free(s);
 		s = a_getff(t, sep);
 	}
@@ -87,18 +83,24 @@ int redirect(my_tab t)
 {
 	my_tab outs = my_tnew();
 	my_tab errs = my_tnew();
-	int    ins = 0;
-
-	ins = a_getinf(t);
-	a_getout(t, outs, errs);
+	int ins = 0;
+	int ret = 0;
+	int *i;
+	i = malloc(sizeof(int));
+	*i = 1;
+	my_tadd(outs, &i);
+	i = malloc(sizeof(int));
+	*i = 2;
+	my_tadd(errs, &i);
 
 	pid_t pid = fork();
 	if (pid)
-	{
 		waitpid(pid, NULL, 0);
-	}
 	else
 	{
+		ins = a_getinf(t);
+		a_getout(t, outs, errs);
+
 		if (dup2(ins, 0))
 			fprintf(stderr, "streams: dup: %s\n", strerror(errno));
 		if (dup2(*((int*)my_tlast(outs)), 1))
@@ -107,10 +109,28 @@ int redirect(my_tab t)
 			fprintf(stderr, "streams: dup: %s\n", strerror(errno));
 
 		i_call(t);
-	}
 
-	close(ins);
-	my_tffree(outs, &a_free);
-	my_tffree(errs, &a_free);
+		close(ins);
+		my_tffree(outs, &a_free);
+		my_tffree(errs, &a_free);
+		exit(0);
+	}
+	return ret;
+}
+
+int is_redirect(my_tab t)
+{
+	int i = 0;
+	int len = my_tlen(t);
+	while (i < len)
+	{
+		if (strchr(my_tget(t, i), '>'))
+			return 1;
+		if (strchr(my_tget(t, i), '<'))
+			return 1;
+		if (strchr(my_tget(t, i), '|'))
+			return 1;
+		++i;
+	}
 	return 0;
 }

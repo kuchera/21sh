@@ -10,7 +10,6 @@ int fun_rm(int argc, char **argv)
 		ret = unlink(s);
 		if (ret)
 		{
-			printf("%d\n", ret);
 			err = errno;
 			fprintf(stderr, "rm : %s\n", strerror(err));
 		}

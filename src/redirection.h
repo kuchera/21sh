@@ -20,6 +20,10 @@
  * Applique la redirection, retourne le dernier code d'erreur
  */
 int redirect(my_tab t);
+/*
+ * Renvoie 1 ou 0 selon si il y a besoin de rediriger
+ */
+int is_redirect(my_tab t);
 // Retourne l'element suivant de sep et les supprime de t 
 char* a_getff(my_tab t, const char *sep);
 // Retourne le fd de input (<)

@@ -8,8 +8,10 @@ int apply(my_tab t)
 	while (my_tlen(tc) > 0)
 	{
 		tt = r_first(tc, ";");
-		//i = i_call(tt);
-		i = redirect(tt);
+		if (is_redirect(t))
+			i = redirect(tt);
+		else
+			i = i_call(tt);
 		if (i == NOSUCHFUNCTION21)
 			fprintf(stderr, "%s: No such function.\n", (char*)my_tget(tt, 0));
 		my_tfree(tt);
