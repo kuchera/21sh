@@ -87,16 +87,30 @@ int redirect(my_tab t)
 {
 	my_tab outs = my_tnew();
 	my_tab errs = my_tnew();
-	int    ins = -1;
-	int    ret = 0;
+	int    ins = 0;
 
 	ins = a_getinf(t);
 	a_getout(t, outs, errs);
 
-	ret = i_call(t); // fork()
+	pid_t pid = fork();
+	if (pid)
+	{
+		waitpid(pid, NULL, 0);
+	}
+	else
+	{
+		if (dup2(ins, 0))
+			fprintf(stderr, "streams: dup: %s\n", strerror(errno));
+		if (dup2(*((int*)my_tlast(outs)), 1))
+			fprintf(stderr, "streams: dup: %s\n", strerror(errno));
+		if (dup2(*((int*)my_tlast(errs)), 0))
+			fprintf(stderr, "streams: dup: %s\n", strerror(errno));
+
+		i_call(t);
+	}
 
 	close(ins);
 	my_tffree(outs, &a_free);
 	my_tffree(errs, &a_free);
-	return ret;
+	return 0;
 }
