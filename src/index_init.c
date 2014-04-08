@@ -12,6 +12,7 @@
 #include "fun_pwd.h"
 #include "fun_time.h"
 #include "fun_rm.h"
+#include "fun_vp.h"
 
 void i_init()
 {
@@ -27,4 +28,5 @@ void i_init()
 	i_add("pwd", &fun_pwd);
 	i_add("time", &fun_time);
 	i_add("rm", &fun_rm);
+	i_add("vp", &fun_vp);
 }
