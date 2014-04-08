@@ -50,13 +50,18 @@ void sexy_print(my_tab t)
 	struct winsize w;
 	ioctl(0, TIOCGWINSZ, &w);
 	int nb_columns = w.ws_col;
+	if (nb_columns < 70)
+		my_tprint(t);
+
+	else
+	{
 	int nb_to_print = (nb_columns / taillemax);
 	
 
 	//printf("%d\t%d\t%d",taillemax, nb_columns, nb_to_print);
 
-	for (i = 0; i < (t->count)-1;)
-	{
+	 for (i = 0; i < (t->count)-1;)
+	 { 
 		for (j = 0; j < nb_to_print-1 && t->tab[i] != NULL;j++)
 		{
 			printf("%s",(char*)(t->tab[i]));
@@ -68,5 +73,6 @@ void sexy_print(my_tab t)
 			i++;
 		}
 		printf("\n");
+	 }
 	}
 }
