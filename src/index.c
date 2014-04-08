@@ -33,7 +33,10 @@ int i_call(my_tab args)
 		return 0;
 	command f = i_get(my_tget(args, 0));
 	if (!f)
+	{
+		fprintf(stderr, "%s: No such function.\n", (char*)my_tget(args, 0));
 		return NOSUCHFUNCTION21;
+	}
 	return f(args->count, (char**)(args->tab));
 }
 

@@ -19,7 +19,7 @@ char* a_getff(my_tab t, const char *sep)
 
 int a_getinf(my_tab t)
 {
-	int fd = -1;
+	int fd = 0;
 	char *s = NULL, *tmp = NULL;
 	do
 	{
@@ -69,7 +69,8 @@ void a_getout(my_tab t, my_tab out, my_tab err)
 {
 	a_getoutf(t, out, 0, ">", 0);
 	a_getoutf(t, out, 0, ">>", 1);
-	if (err) err = 0;
+	a_getoutf(t, err, 0, "2>", 1);
+	a_getoutf(t, err, out, "2>&1", 1);
 }
 
 void a_free(void *e)
@@ -88,10 +89,10 @@ int redirect(my_tab t)
 	int *i;
 	i = malloc(sizeof(int));
 	*i = 1;
-	my_tadd(outs, &i);
+	my_tadd(outs, i);
 	i = malloc(sizeof(int));
 	*i = 2;
-	my_tadd(errs, &i);
+	my_tadd(errs, i);
 
 	pid_t pid = fork();
 	if (pid)
@@ -101,11 +102,11 @@ int redirect(my_tab t)
 		ins = a_getinf(t);
 		a_getout(t, outs, errs);
 
-		if (dup2(ins, 0))
+		if (dup2(ins, 0) < 0)
 			fprintf(stderr, "streams: dup: %s\n", strerror(errno));
-		if (dup2(*((int*)my_tlast(outs)), 1))
+		if (dup2(*((int*)my_tlast(outs)), 1) < 0)
 			fprintf(stderr, "streams: dup: %s\n", strerror(errno));
-		if (dup2(*((int*)my_tlast(errs)), 0))
+		if (dup2(*((int*)my_tlast(errs)), 2) < 0)
 			fprintf(stderr, "streams: dup: %s\n", strerror(errno));
 
 		i_call(t);
