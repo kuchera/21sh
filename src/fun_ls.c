@@ -1,5 +1,39 @@
 #include "fun_ls.h"
 
+static void sexy_print(my_tab t)
+{
+	size_t taillemax = 0;
+	int i, j;
+	size_t k;
+	
+	for( i = 0; i < t->count; i++)
+		if (taillemax < strlen((t->tab[i])))
+			taillemax = strlen((t->tab[i]));
+
+	struct winsize w;
+	ioctl(0, TIOCGWINSZ, &w);
+	int nb_columns = w.ws_col;
+	int nb_to_print = (nb_columns / taillemax);
+	
+
+	//printf("%d\t%d\t%d",taillemax, nb_columns, nb_to_print);
+
+	for (i = 0; i < (t->count)-1;)
+	{
+		for (j = 0; j < nb_to_print-1 && t->tab[i] != NULL;j++)
+		{
+			printf("%s",(char*)(t->tab[i]));
+			if (strlen((t->tab[i])) < taillemax)
+				for(k = strlen((t->tab[i])); k < taillemax;k++)
+					printf(" ");
+			
+			printf("  ");
+			i++;
+		}
+		printf("\n");
+	}
+}
+
 int fun_ls(int argc, char **argv)
 {
 	char *p = pathtos(path(NULL));
@@ -36,6 +70,7 @@ int fun_ls(int argc, char **argv)
 	closedir(dir);
 	return SUCCESS21;
 }
+<<<<<<< HEAD
 
 void sexy_print(my_tab t)
 {
@@ -76,3 +111,5 @@ void sexy_print(my_tab t)
 	 }
 	}
 }
+=======
+>>>>>>> 3ebe9d581fc9910f394ea7ac00614895e180bbe9

@@ -1,0 +1,5 @@
+NAME
+        vp	- execute command in the calling shell
+
+DESCRIPTION
+        vp [COMMAND]
