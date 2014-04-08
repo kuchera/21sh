@@ -93,9 +93,7 @@ int redirect(my_tab t)
 	ins = a_getinf(t);
 	a_getout(t, outs, errs);
 
-	err(errno, "redirect"); //====================
-
-	ret = i_call(t);
+	ret = i_call(t); // fork()
 
 	close(ins);
 	my_tffree(outs, &a_free);

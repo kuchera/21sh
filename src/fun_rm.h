@@ -3,6 +3,10 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <unistd.h>
+#include <errno.h>
+#include "my_charwork.h"
+#include "env.h"
 
 /*
  * Affiche le repertoire courant
