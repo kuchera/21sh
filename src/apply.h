@@ -1,21 +1,23 @@
 #ifndef APPLY_DEF
 #define APPLY_DEF
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <unistd.h>
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <fcntl.h>
-#include <errno.h>
 #include "my_tab.h"
 #include "index.h"
-#include "env.h"
+#include "redirection.h"
 
 /*
  * Execute une commande apres traitement
  */
 int apply(my_tab t);
+/*
+ * Copie le tableau (mais pas les donnees)
+ */
+my_tab r_cp(my_tab t);
+/*
+ * Retourne tous les elements avant sep
+ * et les supprime de t
+ */
+my_tab r_first(my_tab t, const char *sep);
+
 
 #endif

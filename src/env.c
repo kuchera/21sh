@@ -24,6 +24,17 @@ char* home()
 	return path;
 }
 
+char* call_dir()
+{
+	static char *path;
+	if (!path)
+	{
+		path = malloc(1024 * sizeof(char));
+		path = getcwd(path, 1024);
+	}
+	return path;
+}
+
 my_tab build_path(const char *path)
 {
 	int size;
@@ -37,7 +48,7 @@ my_tab path(my_tab path)
 	if (path)
 		t = path;
 	else if (!t)
-		t = build_path(home());
+		t = build_path(call_dir());
 	return t;
 }
 
