@@ -30,7 +30,7 @@ int fun_ls(int argc, char **argv)
 		}
 		ent = readdir(dir);
 	}
-	my_tsort(temp);
+
 	sexy_print(temp);
 	
 	closedir(dir);
@@ -39,6 +39,7 @@ int fun_ls(int argc, char **argv)
 
 void sexy_print(my_tab t)
 {
+	my_tsort(t);
 	size_t taillemax = 0;
 	int i, j;
 	size_t k;
@@ -69,7 +70,7 @@ void sexy_print(my_tab t)
 				for(k = strlen((t->tab[i])); k < taillemax;k++)
 					printf(" ");
 			
-			printf("  ");
+			printf(" ");
 			i++;
 		}
 		printf("\n");
