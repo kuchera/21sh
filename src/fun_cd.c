@@ -1,16 +1,31 @@
 #include "fun_cd.h"
 
+static int is_dir(char *path, char *file)
+{
+	path = my_strcat(path, "/");
+	file = my_strcat(path, file);
+
+	struct stat *fichier = malloc(sizeof(struct stat));
+        stat(file, fichier);
+        int ret = S_ISDIR(fichier->st_mode);
+
+	free(path);
+	free(file);
+	return ret;
+}
+
 static int fun_cd_exist(const char *s)
 {
 	char *pa = pathtos(path(NULL));
 	DIR *dir = opendir(pa);
-	free(pa);
 	struct dirent *ent;
 	do
 		ent = readdir(dir);
 	while (ent && strcmp(s, ent->d_name));
+	int ret = ent && is_dir(pa, ent->d_name);
+	free(pa);
 	closedir(dir);
-	return ent != NULL;
+	return ret;
 }
 
 static void fun_cd_move(const char *s)

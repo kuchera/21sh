@@ -9,6 +9,7 @@
 #include "fun_help.h"
 #include "fun_ls.h"
 #include "fun_man.h"
+#include "fun_mkdir.h"
 #include "fun_pwd.h"
 #include "fun_time.h"
 #include "fun_rm.h"
@@ -25,6 +26,7 @@ void i_init()
 	i_add("help", &fun_help);
 	i_add("ls", &fun_ls);
 	i_add("man", &fun_man);
+	i_add("mkdir", &fun_mkdir);
 	i_add("pwd", &fun_pwd);
 	i_add("time", &fun_time);
 	i_add("rm", &fun_rm);
