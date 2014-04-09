@@ -7,6 +7,7 @@
 #include <errno.h>
 #include "my_charwork.h"
 #include "env.h"
+#include "tools.h"
 
 /*
  * Affiche le repertoire courant

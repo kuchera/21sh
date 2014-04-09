@@ -2,5 +2,8 @@ NAME
 	rm	- remove the file
 
 DESCRIPTION
-        rm [FILES]
+        rm [OPTIONS] [FILES]
 
+	Options :
+
+	-r	Removes also directories

@@ -4,6 +4,8 @@
 #include <unistd.h>
 #include <sys/types.h>
 #include <sys/wait.h>
+#include <string.h>
+#include <errno.h>
 #include "my_charwork.h"
 #include "env.h"
 
