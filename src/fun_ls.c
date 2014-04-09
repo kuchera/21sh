@@ -45,9 +45,10 @@ static void sexy_print(my_tab t)
                 }
                 printf("\n");
 	       }
-	      else
-		i= (t->count);
+		else
+		 i= (t->count);
          }
+
         }
       }
 }
@@ -85,6 +86,7 @@ int fun_ls(int argc, char **argv)
 	}
 
 	sexy_print(temp);
+
 	
 	closedir(dir);
 	return SUCCESS21;
