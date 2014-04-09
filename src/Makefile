@@ -5,10 +5,7 @@ CC= gcc -Wall -Wextra -O2
 
 all:: obj
 	${CC} -o ${EXEC} ${COBJ}
-	@echo
-	@echo
-	@echo ======== MAKE OCAML ========
-	make ocaml
+	make ocaml >> /dev/null
 
 obj::
 	${CC} -c ${CSRC}
