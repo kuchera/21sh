@@ -2,43 +2,53 @@
 
 static void sexy_print(my_tab t)
 {
-	size_t taillemax = 0;
-	int i, j;
-	size_t k;
+     if(t->count >0)
+     {
+        my_tsort(t);
+        size_t taillemax = 0;
+        int i, j;
+        size_t k;
+
+        for(i = 0; i < t->count; i++)
+                if (taillemax < strlen((t->tab[i])))
+                        taillemax = strlen((t->tab[i]));
 	
-	for( i = 0; i < t->count; i++)
-		if (taillemax < strlen((t->tab[i])))
-			taillemax = strlen((t->tab[i]));
+        struct winsize w;
+        ioctl(0, TIOCGWINSZ, &w);
+        int nb_columns = w.ws_col;
+        if (nb_columns < 70)
+                my_tprint(t);
 
-	struct winsize w;
-	ioctl(0, TIOCGWINSZ, &w);
-	int nb_columns = w.ws_col;
-	if (nb_columns < 70)
-		my_tprint(t);
+        else
+        {
+        int nb_to_print = (nb_columns / taillemax)-1;
 
-	else
-	{
-	int nb_to_print = (nb_columns / taillemax);
-	
 
-	//printf("%d\t%d\t%d",taillemax, nb_columns, nb_to_print);
+        //printf("%d\t%d\t%d",taillemax, nb_columns, nb_to_print);
 
-	 for (i = 0; i < (t->count)-1;)
-	 { 
+         for (i = 0; i < (t->count)-1;)
+         {
+	      if ( t->tab[i])
+               {
 		for (j = 0; j < nb_to_print-1 && t->tab[i] != NULL;j++)
-		{
-			printf("%s",(char*)(t->tab[i]));
-			if (strlen((t->tab[i])) < taillemax)
-				for(k = strlen((t->tab[i])); k < taillemax;k++)
-					printf(" ");
-			
-			printf("  ");
-			i++;
-		}
-		printf("\n");
-	 }
-	}
+                {
+                        printf("%s",(char*)(t->tab[i]));
+                        if (strlen((t->tab[i])) < taillemax)
+                                for(k = strlen((t->tab[i])); k < taillemax;k++)
+                                        printf(" ");
+
+                        printf("  ");
+                        i++;
+                }
+                printf("\n");
+	       }
+	      else
+		i= (t->count);
+         }
+        }
+      }
 }
+
 
 int fun_ls(int argc, char **argv)
 {
@@ -70,7 +80,7 @@ int fun_ls(int argc, char **argv)
 		}
 		ent = readdir(dir);
 	}
-	my_tsort(temp);
+
 	sexy_print(temp);
 	
 	closedir(dir);
