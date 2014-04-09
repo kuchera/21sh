@@ -9,6 +9,8 @@
 #include <sys/ioctl.h>
 #include "env.h"
 #include "constants.h"
+#include "color.h"
+#include "tools.h"
 
 /*
  * Affiche le contenu du repertoire courant

@@ -32,7 +32,10 @@ static void sexy_print(my_tab t)
                {
 		for (j = 0; j < nb_to_print-1 && t->tab[i] != NULL;j++)
                 {
-                        printf("%s",(char*)(t->tab[i]));
+			if(is_directory(t->tab[i]))
+				printf(BLEU "%s"NORMAL,(char*)(t->tab[i]));
+			else
+                        	printf("%s",(char*)(t->tab[i]));
                         if (strlen((t->tab[i])) < taillemax)
                                 for(k = strlen((t->tab[i])); k < taillemax;k++)
                                         printf(" ");
