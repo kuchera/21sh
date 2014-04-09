@@ -11,3 +11,17 @@ int has_param(int argc, char **argv, char p)
 	}
 	return 0;
 }
+
+int is_dir(char *path, char *file)
+{
+        path = my_strcat(path, "/");
+        file = my_strcat(path, file);
+
+        struct stat *fichier = malloc(sizeof(struct stat));
+        stat(file, fichier);
+        int ret = S_ISDIR(fichier->st_mode);
+
+        free(path);
+        free(file);
+        return ret;
+}

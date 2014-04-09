@@ -10,11 +10,15 @@ int fun_rm(int argc, char **argv)
 		if (argv[i][0] != '-')
 		{
 			s = my_strcat(path_string(), argv[i]);
+			ret = -100;
 			if (recursive)
 				ret = remove(s);
-			else
+			else if (!is_directory(s))
 				ret = unlink(s);
-			if (ret)
+			
+			if (ret == -100)
+				fprintf(stderr, "rm: Permission denied\n");
+			else if (ret)
 			{
 				err = errno;
 				fprintf(stderr, "rm : %s\n", strerror(err));

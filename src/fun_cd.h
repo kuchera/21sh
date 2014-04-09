@@ -13,6 +13,7 @@
 #include "env.h"
 #include "my_charwork.h"
 #include "my_tab.h"
+#include "tools.h"
 
 /*
  * Fonction de deplacement dans les fichiers

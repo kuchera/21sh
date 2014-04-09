@@ -9,7 +9,7 @@ int fun_mkdir(int argc, char **argv)
 	for (i=1 ; i<argc ; ++i)
 	{
 	 	s = my_strcat(p, argv[i]);
-		if (mkdir(s, 0666))
+		if (mkdir(s, 0777))
 		{
 			ret = errno;
 			fprintf(stderr, "mkdir: %s\n", strerror(errno));
