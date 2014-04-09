@@ -25,3 +25,10 @@ int is_dir(char *path, char *file)
         free(file);
         return ret;
 }
+
+int is_directory(char *file)
+{
+        struct stat *fichier = malloc(sizeof(struct stat));
+        stat(file, fichier);
+        return S_ISDIR(fichier->st_mode);
+}

@@ -16,5 +16,9 @@ int has_param(int argc, char **argv, char p);
  * Teste si path/file est un dossier
  */
 int is_dir(char *path, char *file);
+/*
+ * Teste si file est un dossier
+ */
+int is_directory(char *file);
 
 #endif
