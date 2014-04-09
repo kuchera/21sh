@@ -5,6 +5,10 @@ char* prompts()
 	char *p = pathtos(path(NULL));
 	char *mess = my_strcat(p, " > ");
 	free(p);
+	p = my_strcat(CYAN, mess);
+	free(mess);
+	mess = my_strcat(p, NORMAL);
+	free(p);
 	return mess;
 }
 
