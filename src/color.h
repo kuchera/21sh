@@ -6,6 +6,7 @@
 #define BLEUCLAIR "\033[01;34m"
 #define ROUGE "\033[00;31m"
 #define BLEU "\033[00;34m"
+#define CYAN "\033[00;36m"
 #define SOULIGNE "\033[04m"
 #define NORMAL "\033[00m"
 

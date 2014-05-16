@@ -5,6 +5,7 @@
 #include <unistd.h>
 #include "my_charwork.h"
 #include "my_tab.h"
+#include "color.h"
 
 #define PATH_SEPARATORS	"/"
 

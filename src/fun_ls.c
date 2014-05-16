@@ -1,45 +1,49 @@
 #include "fun_ls.h"
 
-static void sexy_print(my_tab t)
+static int max_size(my_tab t)
 {
-     if(t->count >0)
-     {
-        my_tsort(t);
-        size_t taillemax = 0;
-        int i, j;
-        size_t k;
+	int m = 0;
+	int i, te;
+	char *s;
+	int len = my_tlen(t);
 
-        for(i = 0; i < t->count; i++)
-                if (taillemax < strlen((t->tab[i])))
-                        taillemax = strlen((t->tab[i]));
-	
-        struct winsize w;
-        ioctl(0, TIOCGWINSZ, &w);
-        int nb_columns = w.ws_col;
-        if (nb_columns < 70)
-                my_tprint(t);
+	for (i=0 ; i<len ; ++i)
+	{
+		s = my_tget(t, i);
+		te = strlen(s);
+		if (te > m)
+			m = te;
+	}
 
-        else
-        {
-        int nb_to_print = (nb_columns / taillemax)-1;
+	return m;
+}
 
+static int console_width()
+{
+	struct winsize ws;
+        ioctl(0, TIOCGWINSZ, &ws);
+	return ws.ws_col;
+}
 
-        //printf("%d\t%d\t%d",taillemax, nb_columns, nb_to_print);
+static void print_sp(int n)
+{
+	while (n > 0)
+	{
+		putchar(' ');
+		--n;
+	}
+}
 
-         for (i = 0; i < (t->count)-1;)
-         {
-	      if ( t->tab[i])
-               {
-		for (j = 0; j < nb_to_print-1 && t->tab[i] != NULL;j++)
-                {
-			if(is_directory(t->tab[i]))
-				printf(BLEU "%s"NORMAL,(char*)(t->tab[i]));
-			else
-                        	printf("%s",(char*)(t->tab[i]));
-                        if (strlen((t->tab[i])) < taillemax)
-                                for(k = strlen((t->tab[i])); k < taillemax;k++)
-                                        printf(" ");
+static void print(char *s, int max, char *path)
+{
+	if (is_dir(path, s))
+		printf(BLEUCLAIR "%s" NORMAL, s);
+	else
+		fputs(s, stdout);
+	print_sp(max - strlen(s));
+}
 
+<<<<<<< HEAD
                         printf("  ");
                         i++;
                 }
@@ -51,6 +55,31 @@ static void sexy_print(my_tab t)
 
         }
       }
+=======
+static void sexy_print(my_tab t)
+{
+        my_tsort(t);
+	int max = max_size(t) + 2;
+	if (max < 10)
+		max = 10;
+	int wid = console_width();
+	int i = 0;
+	int len = my_tlen(t);
+	int col = wid / max;
+	char *s;
+	char *path = path_string();
+
+
+	while (i < len)
+	{
+		s = my_tget(t, i);
+		print(s, max, path);
+		if ((i + 1) % col == 0 || i == len - 1)
+			putchar ('\n');
+		++i;
+	}
+	free(path);
+>>>>>>> d18978788bf17b8e0ddcae0cc27b99bc16273e0e
 }
 
 
@@ -70,10 +99,7 @@ int fun_ls(int argc, char **argv)
 		return UNEXPECTED21;
 	}
 	struct dirent *ent = readdir(dir);
-	if (argc >= 2 && !strcmp(argv[1], "-a"))
-		a = 1;
-	else
-		a = 0;
+	a = has_param(argc, argv, 'a');
 	while (ent)
 	{
 		if (a || ent->d_name[0] != '.')
