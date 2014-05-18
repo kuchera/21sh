@@ -1,0 +1,12 @@
+NAME
+	calc	- Mathematical expressions calculator
+
+SYNOPSIS
+	calc
+
+DESCRIPTION
+	Prompts the result of a mathematical expression.
+	Enter 'quit' to exit the calculator.
+	
+EXAMPLES
+	'(4 - 1) * 2' will prompt '6'

@@ -1,5 +1,6 @@
 #include "index.h"
 
+#include "fun_calc.h"
 #include "fun_cat.h"
 #include "fun_cd.h"
 #include "fun_clear.h"
@@ -17,6 +18,7 @@
 
 void i_init()
 {
+	i_add("calc", &fun_calc);
 	i_add("cat", &fun_cat);
 	i_add("cd", &fun_cd);
 	i_add("clear", &fun_clear);

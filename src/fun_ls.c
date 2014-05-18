@@ -43,19 +43,6 @@ static void print(char *s, int max, char *path)
 	print_sp(max - strlen(s));
 }
 
-<<<<<<< HEAD
-                        printf("  ");
-                        i++;
-                }
-                printf("\n");
-	       }
-		else
-		 i= (t->count);
-         }
-
-        }
-      }
-=======
 static void sexy_print(my_tab t)
 {
         my_tsort(t);
@@ -79,7 +66,6 @@ static void sexy_print(my_tab t)
 		++i;
 	}
 	free(path);
->>>>>>> d18978788bf17b8e0ddcae0cc27b99bc16273e0e
 }
 
 
