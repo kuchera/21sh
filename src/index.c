@@ -25,12 +25,71 @@ static my_tab mindex(my_tab t)
 	return tab;
 }
 
+static void try_alias(my_tab t)
+{
+	my_tab a = i_alias(my_tget(t, 0), NULL);
+	if (a)
+	{
+		my_trmat(t, 0);
+		int i = my_tlen(a) - 1;
+		while (i >= 0)
+		{
+			my_tinsert(t, my_tget(a, i), 0);
+			--i;
+		}
+	}
+}
+
 // FUNCTIONS
+
+my_tab i_alias(char *s, my_tab o)
+{
+	static my_tab a = NULL;
+	if (!a)
+		a = my_tnew();
+	if (o)
+	{
+		void **p = malloc(2*sizeof(void*));
+		*p = s;
+		p[1] = o;
+		my_tinsert(a, p, 0);
+	}
+	if (!s)
+	{
+		int i, j;
+		void **p;
+		for (i=0 ; i<my_tlen(a) ; ++i)
+		{
+			p = my_tget(a, i);
+			s = *p;
+			o = p[1];
+			printf("%s = ", s);
+			for (j=0 ; j<my_tlen(o) ; ++j)
+				printf("%s ", (char*)(my_tget(o, j)));
+			putchar('\n');
+			
+		}
+		return NULL;
+	}
+	char *c;
+	int i = 0;
+	void **p;
+	while (i < my_tlen(a))
+	{
+		p = my_tget(a, i);
+		c = *p;
+		if (!strcmp(s, c))
+			return p[1];
+		++i;
+	}
+	return NULL;
+}
 
 int i_call(my_tab args)
 {
 	if (my_tlen(args) <= 0)
 		return 0;
+	try_alias(args);
 	command f = i_get(my_tget(args, 0));
 	if (!f)
 	{

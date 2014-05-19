@@ -17,4 +17,9 @@
  */
 int fun_ls(int argc, char **argv);
 
+/*
+ * Retourne le contenu du dossier path
+ */
+my_tab get_files(char *path);
+
 #endif

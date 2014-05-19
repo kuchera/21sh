@@ -5,7 +5,7 @@ int has_param(int argc, char **argv, char p)
 	--argc;
 	while (argc >= 0)
 	{
-		if (argv[argc] && argv[argc][0] && strchr(argv[argc], p))
+		if (argv[argc] && argv[argc][0] == '-' && strchr(argv[argc], p))
 			return 1;
 		--argc;
 	}
@@ -24,6 +24,14 @@ int is_dir(char *path, char *file)
         free(path);
         free(file);
         return ret;
+}
+
+int is_exec(char *path, char *file)
+{
+        path = my_strcat(path, "/");
+        file = my_strcat(path, file);
+	struct stat sb;
+	return stat(file, &sb) == 0 && sb.st_mode & S_IXUSR;
 }
 
 int is_directory(char *file)

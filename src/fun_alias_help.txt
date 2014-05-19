@@ -1,0 +1,11 @@
+NAME
+	alias 	- Creates shortcuts for commands
+
+SYNOPSIS
+	alias shortcut command
+
+DESCRIPTION
+	With no parameters, alias lists all the aliases
+
+EXAMPLES
+	alias la "ls -a"

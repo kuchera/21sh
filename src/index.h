@@ -16,6 +16,8 @@ command i_get(const char *id);
 int i_call(my_tab args);
 // Associe la commande c a la fonction f
 void i_add(const char *id, command f);
+// Associe la commande i a o
+my_tab i_alias(char *s, my_tab o);
 // Libere l'index
 void i_free();
 // Renvoie le nombre de fonctions dans l'index

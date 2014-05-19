@@ -8,6 +8,8 @@
 #include <errno.h>
 #include <stdio.h>
 #include <string.h>
+#include "my_charwork.h"
+#include "env.h"
 
 /*
  * Execute la commande dans le terminal de l'os

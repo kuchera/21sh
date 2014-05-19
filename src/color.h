@@ -7,6 +7,7 @@
 #define ROUGE "\033[00;31m"
 #define BLEU "\033[00;34m"
 #define CYAN "\033[00;36m"
+#define VERT "\033[32m"
 #define SOULIGNE "\033[04m"
 #define NORMAL "\033[00m"
 

@@ -38,6 +38,8 @@ static void print(char *s, int max, char *path)
 {
 	if (is_dir(path, s))
 		printf(BLEUCLAIR "%s" NORMAL, s);
+	else if (is_exec(path, s))
+		printf(VERT "%s" NORMAL, s);
 	else
 		fputs(s, stdout);
 	print_sp(max - strlen(s));
@@ -102,4 +104,25 @@ int fun_ls(int argc, char **argv)
 	
 	closedir(dir);
 	return SUCCESS21;
+}
+
+my_tab get_files(char *path)
+{
+        DIR *dir = opendir(path);
+	if (!dir)
+		return NULL;
+        size_t i = 0;
+        my_tab temp = my_tnew();
+        struct dirent *ent = readdir(dir);
+        while (ent)
+        {
+                if (ent->d_name[0] != '.')
+                {
+                        my_tadd(temp,my_stralloc(ent->d_name));
+                        i++;
+                }
+                ent = readdir(dir);
+        }
+	closedir(dir);
+	return temp;
 }

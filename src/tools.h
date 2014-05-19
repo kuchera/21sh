@@ -20,5 +20,9 @@ int is_dir(char *path, char *file);
  * Teste si file est un dossier
  */
 int is_directory(char *file);
+/*
+ * Teste si le fichier est executable
+ */
+int is_exec(char *path, char *file);
 
 #endif

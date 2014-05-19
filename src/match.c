@@ -2,6 +2,7 @@
 
 void match(my_tab argv)
 {
+	match_joker(argv);
 	match_quotes(argv);
 }
 
@@ -31,4 +32,28 @@ void match_quotes(my_tab tab)
 		my_tadd(tab, s);
 	}
 	free(t);
+}
+
+void match_joker(my_tab argv)
+{
+	char *pa = pathtos(path(NULL));
+	char *s;
+	my_tab files = get_files(pa);
+	int i = 0, j;
+	while (i < my_tlen(argv))
+	{
+		s = my_tget(argv, i);
+		if (!strcmp(s, "*"))
+		{
+			my_trmat(argv, i);
+			for (j=0 ; j < my_tlen(files) ; ++j)
+			{
+				my_tinsert(argv, my_tget(files, j), i);
+				++i;
+			}
+		}
+		++i;
+	}
+	free(pa);
+	my_tfree(files);
 }
