@@ -12,5 +12,6 @@ char* read_input();
  * Recupere les arguments de la commande entree
  */
 my_tab read_command();
+my_tab treat_command(char *s);
 
 #endif

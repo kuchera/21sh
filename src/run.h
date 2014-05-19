@@ -11,6 +11,7 @@
 #include "print.h"
 #include "input.h"
 #include "constants.h"
+#include "shrc.h"
 
 /*
  * Boucle principale

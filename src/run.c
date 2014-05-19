@@ -2,6 +2,8 @@
 
 int run(int argc, char **argv)
 {
+	shrc();
+
 	if (argc >= 2)
         {
 		my_tab t = my_tbuild((void**)(argv + 1), argc - 1);
@@ -18,5 +20,4 @@ int run(int argc, char **argv)
 		my_tffree(t, &free);
 	}
 	return FATAL21;
-	if (argc && argv) return 0;
 }
