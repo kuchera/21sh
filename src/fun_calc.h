@@ -1,5 +1,5 @@
-#ifndef FUN_DISPLAY_DEF
-#define FUN_DISPLAY_DEF
+#ifndef FUN_CALC_DEF
+#define FUN_CALC_DEF
 
 #include <unistd.h>
 #include <sys/types.h>
@@ -8,8 +8,8 @@
 #include "env.h"
 
 /*
- * Affichage d'images
+ * Calculatrice
  */
-int fun_display(int argc, char **argv);
+int fun_calc(int argc, char **argv);
 
 #endif
